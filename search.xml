@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2023%2F04%2F04%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment 1alert(123)]]></content>
+      <categories>
+        <category>test</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Ubuntu16.04下配置redis]]></title>
+    <url>%2F2017%2F11%2F03%2FUbuntu16-04%E4%B8%8B%E9%85%8D%E7%BD%AEredis%2F</url>
+    <content type="text"><![CDATA[下载redis1wget http://download.redis.io/releases/redis-4.0.2.tar.gz 解压redis1tar -zxvf redis-4.0.2.tar.gz 进入redis目录，并编译redis12cd redis-4.0.2.tar.gzmake //编译redis，需要提前安装gcc 安装redis1sudo make PREFIX=/usr/local/redis install //安装到/usr/local/redis目录下 注册服务123456789101112131415161718192021222324# 1.创建redis配置目录sudo mkdir /etc/redis# 2.从解压包中拷贝配置文件sudo cp ~/下载/redis-4.0.2/redis.conf /etc/redis/6379.conf# 3.修改配置文件sudo vim /etc/redis/6379.conf # 打开后台运行选项 daemonize yes # 设置日志文件路径 logfile /var/log/redis/redis.log # 设置持久化文件存放路径 dir /var/lib/redis # 注意：上面的两个文件夹没有创建，需要启动服务前创建 sudo mkdir /var/log/redis sudo mkdir /var/lib/redis# 4.从解压包中拷贝配置服务脚本sudo cp ~/下载/redis-4.0.2/utils/redis_init_script /etc/init.d/redis# 5.修改服务脚本EXEC=/usr/local/redis/bin/redis-serverCLIEXEC=/usr/local/redis/bin/redis-cli# 6.设置服务脚本有执行权限sudo chmod +x /etc/init.d/redis# 7.注册服务sudo update-rc.d redis defaults 遇到问题1234567891011# script &apos;redis&apos; missing LSB tags and overrides问题的解决办法sudo vim /etc/init.d/redis在文件头部`#!/bin/sh`下面添加以下代码：### BEGIN INIT INFO# Provides: OSSEC HIDS# Required-Start: $network $remote_fs $syslog $time# Required-Stop:# Default-Start: 2 3 4 5# Default-Stop: 0 1 6# Short-Description: OSSEC HIDS### END INIT INFO 服务命令1234开启redis： service redis start停止redis： service redis stop重启redis： service redis restart查看服务状态：service redis status]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>linux</tag>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+</search>
